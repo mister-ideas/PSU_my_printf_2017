@@ -22,6 +22,7 @@ int my_printf(char *str, ...)
 			case 'd' :
 			case 'i' : my_put_nbr(va_arg(ap, int)); break;
 			case 'c' : my_putchar(va_arg(ap, int)); break;
+			case '%' : my_putchar('%');
 			}
 			i++;
 		} else
