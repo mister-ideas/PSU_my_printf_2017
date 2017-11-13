@@ -27,7 +27,6 @@ void convert_hexa(int mode, int nb)
 	int remainder;
 	int quotient;
 	int i = 1;
-	int j;
 	int temp;
 	char result[16];
 
@@ -43,7 +42,7 @@ void convert_hexa(int mode, int nb)
 		result[i++]= temp;
 		quotient /= 16;
 	}
-	for (j = i - 1; j > 0; j--)
+	for (int j = i - 1; j > 0; j--)
 		my_putchar(result[j]);
 }
 
