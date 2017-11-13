@@ -18,14 +18,13 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 		ar rc $(NAME) $(OBJ)
-		mkdir -p ../my
-		mv $(NAME) ../my/
+		mv $(NAME) ../../
 
 clean:
 		rm -f $(OBJ)
 
 fclean: 	clean
-		rm -f ../my/$(NAME)
+		rm -f ../../$(NAME)
 
 re:		fclean all
 
