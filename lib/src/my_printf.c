@@ -63,6 +63,7 @@ int my_printf(char *str, ...)
 			case 'o' : convert_octal(va_arg(ap, int)); break;
 			case 'x' : convert_hexa(0, va_arg(ap, int)); break;
 			case 'X' : convert_hexa(1, va_arg(ap, int)); break;
+			case 'u' : my_put_nbr(va_arg(ap, unsigned int); break;
 			}
 			i++;
 		} else
