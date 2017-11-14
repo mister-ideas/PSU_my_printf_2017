@@ -8,6 +8,8 @@
 SRC	=	my_put_nbr.c	\
 		my_putchar.c	\
 		my_putstr.c	\
+		convert_octal.c	\
+		convert_hexa.c	\
 		my_printf.c	\
 
 OBJ	=	$(SRC:.c=.o)
