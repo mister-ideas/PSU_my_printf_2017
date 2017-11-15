@@ -10,6 +10,7 @@ SRC	=	my_put_nbr.c			\
 		my_putstr.c			\
 		convert_octal.c			\
 		convert_hexa.c			\
+		convert_bin.c			\
 		replace_non_printables.c	\
 		my_printf.c			\
 

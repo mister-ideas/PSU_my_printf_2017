@@ -22,6 +22,7 @@ void print_arg(char *str, va_list ap, int i)
 	case 's': my_putstr(va_arg(ap, char*)); break;
 	case '%': my_putchar('%'); break;
 	case 'S': replace_non_printables(va_arg(ap, char*)); break;
+	case 'b': convert_bin(va_arg(ap, int)); break;
 	}
 }
 
