@@ -11,6 +11,7 @@
 void my_putchar(char c);
 void convert_hexa(int mode, int nb);
 void convert_octal(int nb);
+void replace_non_printables(char *str);
 
 int my_putstr(char const *str);
 int my_put_nbr(int nb);
