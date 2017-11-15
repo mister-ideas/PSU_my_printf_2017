@@ -12,7 +12,7 @@ void convert_bin(int nb)
 	int result = 0;
 	int remainder;
 	int i = 1;
-	
+
 	while (nb != 0) {
 		remainder = nb % 2;
 		nb /= 2;
