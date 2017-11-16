@@ -26,6 +26,16 @@ void print_arg(char *str, va_list ap, int i)
 	}
 }
 
+int double_percent(char *str, int i)
+{
+	if (str[i + 1] == ' ' && str[i + 2] == '%') {
+		my_putchar('%');
+		i += 2;
+	} else
+		i++;
+	return (i);
+}
+
 int my_printf(char *str, ...)
 {
 	va_list ap;
@@ -34,7 +44,7 @@ int my_printf(char *str, ...)
 	for (int i = 0; str[i]; i++) {
 		if (str[i] == '%') {
 			print_arg(str, ap, i);
-			i++;
+			i = double_percent(str, i);
 		} else
 			my_putchar(str[i]);
 	}
