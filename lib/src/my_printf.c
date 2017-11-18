@@ -28,7 +28,7 @@ pf pf_specifier[] = {
 	['S'] = do_non_printables,
 	['o'] = do_octal,
 	['x'] = do_hexa,
-        ['X'] = do_hexa_caps,
+	['X'] = do_hexa_caps,
 	['u'] = do_uint,
 	['%'] = do_mod,
 	['b'] = do_bin
@@ -63,14 +63,16 @@ int is_flag(char c)
 int my_printf(char *str, ...)
 {
 	va_list ap;
+	char a;
 
 	va_start(ap, str);
 	for (int i = 0; str[i]; i++) {
-		if (str[i] == '%' && str[i + 1] == '+' && is_flag(str[i + 2]) == 1) {
+		a = str[i + 2];
+		if (str[i] == '%' && str[i + 1] == '+' && is_flag(a) == 1) {
 			pf_format[str[i + 1]](ap);
 			i = double_percent(str, i) + 2;
 		} else if (str[i] == '%' && str[i + 1] == '#') {
-			pf_format[str[i + 2]](ap);
+			pf_format[str[a](ap);
 			i = double_percent(str, i) + 1;
 		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
 			pf_specifier[str[i + 1]](ap);
