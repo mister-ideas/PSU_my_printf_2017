@@ -12,6 +12,10 @@ SRC	=	my_put_nbr.c			\
 		convert_hexa.c			\
 		convert_bin.c			\
 		replace_non_printables.c	\
+		print_chars.c			\
+		print_numbers.c			\
+		print_hexa.c			\
+		print_format.c			\
 		my_printf.c			\
 
 OBJ	=	$(SRC:.c=.o)

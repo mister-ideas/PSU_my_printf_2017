@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-void convert_octal(int nb)
+void convert_octal(int mode, int nb)
 {
 	int result = 0;
 	int i = 1;
@@ -17,5 +17,14 @@ void convert_octal(int nb)
 		nb /= 8;
 		i *= 10;
 	}
-	my_put_nbr(result);
+	if (mode == 2)
+		my_putchar('\\');
+	if (mode == 1 || mode == 2) {
+		if (result < 10)
+			my_putstr("00");
+		else
+			my_putchar('0');
+		my_put_nbr(result);
+	} else
+		my_put_nbr(result);
 }

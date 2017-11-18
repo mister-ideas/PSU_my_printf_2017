@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2017
+1;4804;0c** EPITECH PROJECT, 2017
 ** my_printf
 ** File description:
 ** my_printf.c
@@ -8,23 +8,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "my.h"
-
-void print_arg(char *str, va_list ap, int i)
-{
-	switch (str[i + 1]) {
-	case 'd':
-	case 'i': my_put_nbr(va_arg(ap, int)); break;
-	case 'o': convert_octal(va_arg(ap, int)); break;
-	case 'x': convert_hexa(0, va_arg(ap, int)); break;
-	case 'X': convert_hexa(1, va_arg(ap, int)); break;
-	case 'u': my_put_nbr(va_arg(ap, unsigned int)); break;
-	case 'c': my_putchar(va_arg(ap, int)); break;
-	case 's': my_putstr(va_arg(ap, char*)); break;
-	case '%': my_putchar('%'); break;
-	case 'S': replace_non_printables(va_arg(ap, char*)); break;
-	case 'b': convert_bin(va_arg(ap, int)); break;
-	}
-}
 
 int double_percent(char *str, int i)
 {
@@ -36,14 +19,57 @@ int double_percent(char *str, int i)
 	return (i);
 }
 
+typedef void (*pf)(va_list ap);
+pf pf_specifier[] = {
+	['d'] = do_int,
+	['i'] = do_int,
+	['c'] = do_char,
+	['s'] = do_string,
+	['S'] = do_non_printables,
+	['o'] = do_octal,
+	['x'] = do_hexa,
+	['X'] = do_hexa_caps,
+	['u'] = do_uint,
+	['%'] = do_mod,
+	['b'] = do_bin,
+};
+pf pf_format[] = {
+	['x'] = do_hexa_format,
+	['X'] = do_hexa_format_caps,
+	['o'] = do_octal_format
+};
+
+int is_flag(char c)
+{
+	switch(c) {
+	case 'd':
+	case 'i':
+	case 'c':
+	case 's':
+	case 'S':
+	case 'o':
+	case 'x':
+	case 'X':
+	case 'u':
+	case '%':
+	case 'b':
+		return (1);
+	default:
+		return (0);
+	}
+}	
+
 int my_printf(char *str, ...)
 {
 	va_list ap;
 
 	va_start(ap, str);
 	for (int i = 0; str[i]; i++) {
-		if (str[i] == '%') {
-			print_arg(str, ap, i);
+		if (str[i] == '%' && str[i + 1] == '#') {
+			pf_format[str[i + 2]](ap);
+			i = double_percent(str, i) + 1;
+		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
+			pf_specifier[str[i + 1]](ap);
 			i = double_percent(str, i);
 		} else
 			my_putchar(str[i]);

@@ -16,4 +16,11 @@ fclean:
 
 re:		fclean all
 
+test:
+		gcc tests/tests.c lib/src/*.c -lcriterion
+		./a.out
+
+testclean:
+		rm a.out
+
 .PHONY:		all clean fclean re
