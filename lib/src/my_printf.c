@@ -37,7 +37,6 @@ pf pf_format[] = {
 	['x'] = do_hexa_format,
 	['X'] = do_hexa_format_caps,
 	['o'] = do_octal_format,
-	['+'] = do_sign_format
 };
 
 int is_flag(char c)
@@ -68,10 +67,7 @@ int my_printf(char *str, ...)
 	va_start(ap, str);
 	for (int i = 0; str[i]; i++) {
 		a = str[i + 2];
-		if (str[i] == '%' && str[i + 1] == '+' && is_flag(a) == 1) {
-			pf_format[str[i + 1]](ap);
-			i = double_percent(str, i) + 2;
-		} else if (str[i] == '%' && str[i + 1] == '#') {
+		if (str[i] == '%' && str[i + 1] == '#') {
 			pf_format[str[a]](ap);
 			i = double_percent(str, i) + 1;
 		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
