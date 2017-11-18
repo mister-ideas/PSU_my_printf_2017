@@ -72,7 +72,7 @@ int my_printf(char *str, ...)
 			pf_format[str[i + 1]](ap);
 			i = double_percent(str, i) + 2;
 		} else if (str[i] == '%' && str[i + 1] == '#') {
-			pf_format[str[a](ap);
+			pf_format[str[a]](ap);
 			i = double_percent(str, i) + 1;
 		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
 			pf_specifier[str[i + 1]](ap);
