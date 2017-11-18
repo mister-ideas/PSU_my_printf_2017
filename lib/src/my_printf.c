@@ -28,10 +28,10 @@ pf pf_specifier[] = {
 	['S'] = do_non_printables,
 	['o'] = do_octal,
 	['x'] = do_hexa,
-	['X'] = do_hexa_caps,
+        ['X'] = do_hexa_caps,
 	['u'] = do_uint,
 	['%'] = do_mod,
-	['b'] = do_bin,
+	['b'] = do_bin
 };
 pf pf_format[] = {
 	['x'] = do_hexa_format,
@@ -69,8 +69,7 @@ int my_printf(char *str, ...)
 		if (str[i] == '%' && str[i + 1] == '+' && is_flag(str[i + 2]) == 1) {
 			pf_format[str[i + 1]](ap);
 			i = double_percent(str, i) + 2;
-		}
-		if (str[i] == '%' && str[i + 1] == '#') {
+		} else if (str[i] == '%' && str[i + 1] == '#') {
 			pf_format[str[i + 2]](ap);
 			i = double_percent(str, i) + 1;
 		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
