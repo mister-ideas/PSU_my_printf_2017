@@ -1,5 +1,5 @@
 /*
-1;4804;0c** EPITECH PROJECT, 2017
+** EPITECH PROJECT, 2017
 ** my_printf
 ** File description:
 ** my_printf.c
@@ -41,7 +41,7 @@ pf pf_format[] = {
 
 int is_flag(char c)
 {
-	switch(c) {
+	switch (c) {
 	case 'd':
 	case 'i':
 	case 'c':
@@ -57,7 +57,7 @@ int is_flag(char c)
 	default:
 		return (0);
 	}
-}	
+}
 
 int my_printf(char *str, ...)
 {
