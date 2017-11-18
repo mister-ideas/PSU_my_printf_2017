@@ -24,3 +24,9 @@ void do_octal_format(va_list ap)
 {
 	convert_octal(1, va_arg(ap, int));
 }
+
+void do_sign_format(va_list ap)
+{
+	my_putchar('+');
+	my_put_nbr(va_arg(ap, int));
+}

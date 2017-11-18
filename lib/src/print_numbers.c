@@ -27,9 +27,3 @@ void do_bin(va_list ap)
 {
 	convert_bin(va_arg(ap, int));
 }
-
-void do_pointer(va_list ap)
-{
-	my_putstr("0x");
-	convert_hexa(0, va_arg(ap, unsigned long int));
-}
