@@ -13,7 +13,6 @@ clean:
 
 fclean:
 		make fclean -C lib/src
-		rm -f a.out
 
 re:		fclean all
 
