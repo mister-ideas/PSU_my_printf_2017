@@ -9,16 +9,6 @@
 #include <stdarg.h>
 #include "my.h"
 
-int double_percent(char *str, int i)
-{
-	if (str[i + 1] == ' ' && str[i + 2] == '%') {
-		my_putchar('%');
-		i += 2;
-	} else
-		i++;
-	return (i);
-}
-
 typedef void (*pf)(va_list ap);
 pf pf_specifier[] = {
 	['d'] = do_int,
@@ -36,8 +26,18 @@ pf pf_specifier[] = {
 pf pf_format[] = {
 	['x'] = do_hexa_format,
 	['X'] = do_hexa_format_caps,
-	['o'] = do_octal_format,
+	['o'] = do_octal_format
 };
+
+int double_percent(char *str, int i)
+{
+	if (str[i + 1] == ' ' && str[i + 2] == '%') {
+		my_putchar('%');
+		i += 2;
+	} else
+		i++;
+	return (i);
+}
 
 int is_flag(char c)
 {
@@ -59,22 +59,32 @@ int is_flag(char c)
 	}
 }
 
+int check_case(va_list ap, char *str, int i)
+{
+	char c = str[i + 2];
+
+	if (str[i] == '%' && str[i + 1] == '+' && is_flag(c) == 1) {
+		my_putchar('+');
+		my_put_nbr(va_arg(ap, int));
+		i = double_percent(str, i) + 2;
+	} else if (str[i] == '%' && str[i + 1] == '#') {
+		pf_format[c](ap);
+		i = double_percent(str, i) + 1;
+	} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
+		pf_specifier[str[i + 1]](ap);
+		i = double_percent(str, i);
+	} else
+		my_putchar(str[i]);
+	return (i);
+}
+
 int my_printf(char *str, ...)
 {
 	va_list ap;
-	char a;
 
 	va_start(ap, str);
 	for (int i = 0; str[i]; i++) {
-		a = str[i + 2];
-		if (str[i] == '%' && str[i + 1] == '#') {
-			pf_format[str[a]](ap);
-			i = double_percent(str, i) + 1;
-		} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
-			pf_specifier[str[i + 1]](ap);
-			i = double_percent(str, i);
-		} else
-			my_putchar(str[i]);
+		i = check_case(ap, str, i);
 	}
 	va_end(ap);
 	return (0);

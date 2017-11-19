@@ -24,7 +24,7 @@ void convert_hexa(int mode, int nb)
 			temp += 87;
 		else if (mode == 1)
 			temp += 55;
-		result[i++]= temp;
+		result[i++] = temp;
 		quotient /= 16;
 	}
 	for (int j = i - 1; j > 0; j--)
