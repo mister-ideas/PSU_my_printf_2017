@@ -17,14 +17,4 @@ fclean:
 
 re:		fclean all
 
-test:
-		gcc tests/tests1.c lib/src/*.c -lcriterion
-		./a.out
-		gcc tests/tests2.c lib/src/*.c -lcriterion
-		./a.out
-		gcc tests/tests3.c lib/src/*.c -lcriterion
-		./a.out
-		gcc tests/tests4.c lib/src/*.c -lcriterion
-		./a.out
-
 .PHONY:		all clean fclean re

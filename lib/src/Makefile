@@ -16,7 +16,7 @@ SRC	=	my_put_nbr.c			\
 		print_numbers.c			\
 		print_hexa.c			\
 		print_format.c			\
-		my_printf.c			\
+		my_printf.c
 
 OBJ	=	$(SRC:.c=.o)
 

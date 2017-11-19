@@ -9,7 +9,6 @@
 
 void convert_hexa(int mode, int nb)
 {
-	int remainder;
 	int quotient;
 	int i = 1;
 	int temp;
