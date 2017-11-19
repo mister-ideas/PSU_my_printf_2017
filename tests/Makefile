@@ -10,7 +10,6 @@ SRC= 		$(SRC_DIR)/my_put_nbr.c 		\
 		$(SRC_DIR)/print_chars.c		\
 		$(SRC_DIR)/print_numbers.c		\
 		$(SRC_DIR)/print_hexa.c			\
-		$(SRC_DIR)/print_format.c		\
 		$(SRC_DIR)/my_printf.c
 
 SRC_UT_DIR= 	.

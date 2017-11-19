@@ -17,9 +17,8 @@ void convert_octal(int mode, int nb)
 		nb /= 8;
 		i *= 10;
 	}
-	if (mode == 2)
+	if (mode == 2) {
 		my_putchar('\\');
-	if (mode == 1 || mode == 2) {
 		if (result < 10)
 			my_putstr("00");
 		else

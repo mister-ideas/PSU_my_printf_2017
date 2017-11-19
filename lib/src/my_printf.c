@@ -22,11 +22,6 @@ pf pf_specifier[] = {
 	['%'] = do_mod,
 	['b'] = do_bin
 };
-pf pf_format[] = {
-	['x'] = do_hexa_format,
-	['X'] = do_hexa_format_caps,
-	['o'] = do_octal_format
-};
 
 int double_percent(char *str, int i)
 {
@@ -66,9 +61,6 @@ int check_case(va_list ap, char *str, int i)
 		my_putchar('+');
 		my_put_nbr(va_arg(ap, int));
 		i = double_percent(str, i) + 2;
-	} else if (str[i] == '%' && str[i + 1] == '#' && is_flag(c) == 1) {
-		pf_format[c](ap);
-		i = double_percent(str, i) + 1;
 	} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
 		pf_specifier[str[i + 1]](ap);
 		i = double_percent(str, i);
