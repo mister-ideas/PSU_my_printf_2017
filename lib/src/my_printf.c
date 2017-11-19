@@ -66,7 +66,7 @@ int check_case(va_list ap, char *str, int i)
 		my_putchar('+');
 		my_put_nbr(va_arg(ap, int));
 		i = double_percent(str, i) + 2;
-	} else if (str[i] == '%' && str[i + 1] == '#') {
+	} else if (str[i] == '%' && str[i + 1] == '#' && is_flag(c) == 1) {
 		pf_format[c](ap);
 		i = double_percent(str, i) + 1;
 	} else if (str[i] == '%' && is_flag(str[i + 1]) == 1) {
