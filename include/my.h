@@ -26,7 +26,7 @@ void do_octal(va_list ap);
 void do_char(va_list ap);
 void do_string(va_list ap);
 void do_non_printables(va_list ap);
-void do_mod();
+void do_mod(va_list ap);
 void do_pointer(va_list ap);
 void do_hexa_format(va_list ap);
 void do_hexa_format_caps(va_list ap);

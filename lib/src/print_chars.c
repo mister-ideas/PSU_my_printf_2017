@@ -23,7 +23,7 @@ void do_non_printables(va_list ap)
 	replace_non_printables(va_arg(ap, char*));
 }
 
-void do_mod()
+void do_mod(va_list ap)
 {
 	my_putchar('%');
 }
