@@ -32,6 +32,10 @@ $(NAME): 	$(OBJ)
 
 clean:
 		rm -f $(OBJ)
+		rm -f *.gcno
+		rm -f *.gcda
+		rm -f ../lib/src/*.gcda
+		rm -f ../lib/src/*.gcno
 
 fclean: 	clean
 		rm -f $(NAME)
