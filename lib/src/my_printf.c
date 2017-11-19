@@ -9,7 +9,6 @@
 #include <stdarg.h>
 #include "my.h"
 
-typedef void (*pf)(va_list ap);
 pf pf_specifier[] = {
 	['d'] = do_int,
 	['i'] = do_int,

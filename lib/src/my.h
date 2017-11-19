@@ -10,6 +10,8 @@
 
 #include <stdarg.h>
 
+typedef void (*pf)(va_list ap);
+
 void my_putchar(char c);
 void convert_hexa(int mode, int nb);
 void convert_octal(int mode, int nb);
