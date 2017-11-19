@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** my_printf
 ** File description:
-** simples.c
+** tests3.c
 */
 
 #include <criterion/criterion.h>

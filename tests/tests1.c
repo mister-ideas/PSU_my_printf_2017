@@ -2,17 +2,17 @@
 ** EPITECH PROJECT, 2017
 ** my_printf
 ** File description:
-** formats.c
+** tests1.c
 */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include "../include/my.h"
 
-Test(my_printf, simple_hexa_format, .init = redirect_all_std)
+void redirect_all_std(void)
 {
-	my_printf("%#x", 9);
-	cr_assert_stdout_eq_str("0x9");
+	cr_redirect_stdout();
+	cr_redirect_stderr();
 }
 
 Test(my_printf, simple_hexa_format_caps, .init = redirect_all_std)
@@ -27,13 +27,13 @@ Test(my_printf, simple_octal_format, .init = redirect_all_std)
 	cr_assert_stdout_eq_str("011");
 }
 
-Test(my_printf, simple_sign_format, .init = redirect_all_std)
+Test(my_printf, simple_unknown_format, .init = redirect_all_std)
 {
-	my_printf("%+i", 123);
-	cr_assert_stdout_eq_str("+123");
+	my_printf("%#r", 123);
+	cr_assert_stdout_eq_str("%#r");
 }
 
-Test(my_printf, simple_unknown, .init = redirect_all_std)
+Test(my_printf, simple_unknown_specifier, .init = redirect_all_std)
 {
 	my_printf("%f", 123);
 	cr_assert_stdout_eq_str("%f");
