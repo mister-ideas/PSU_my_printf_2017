@@ -15,6 +15,21 @@ void redirect_all_std(void)
 	cr_redirect_stderr();
 }
 
+Test(my_printf, simple_bin, .init = redirect_all_std)
+{
+	my_printf("%b", 10);
+	cr_assert_stdout_eq_str("1010");
+}
+
+Test(my_printf, simple_non_printables, .init = redirect_all_std)
+{
+	char str[5] = "toto";
+
+	str[1] = 6;
+	my_printf("%S", str);
+	cr_assert_stdout_eq_str("t\\006to");
+}
+
 Test(my_printf, simple_string, .init = redirect_all_std)
 {
 	my_printf("%s", "hello world");
